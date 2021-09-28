@@ -5,23 +5,27 @@ export class Car extends Component {
         super();
         this.state = {
             firstname: "Mercedes",
-            lastname: "Benz"
+            lastname: "Benz",
+            clickSingle: 0,
+            clickDouble: 0
         }
     }
 
-changeNamae() {
-    this.setState({
-        firstname: "Range",
-        lastname: "Rover"
-    })
-}
+    changeNamae() {
+        this.setState({
+            firstname: "Range",
+            lastname: "Rover",
+            clickSingle: this.state.clickSingle + 1
+        })
+    }
 
-changeName() {
-    this.setState({
-        firstname: "Rolls",
-        lastname: "Royce"
-    })
-}
+    changeName() {
+        this.setState({
+            firstname: "Rolls",
+            lastname: "Royce",
+            clickDouble: this.state.clickDouble + 1
+        })
+    }
 
     render() {
         console.log(this.props)
@@ -36,9 +40,12 @@ changeName() {
                     {this.state.firstname} -
                     {this.state.lastname}
                 </p>
+                <p>first    {this.state.clickSingle} </p>
+                <p>second   {this.state.clickDouble}
+                </p>
                 <button onClick={() => this.changeNamae()} onDoubleClick={() => this.changeName()}>Single Click</button>
                 <button onClick={() => this.changeName()}>Double Click</button>
-                </>
-                )
+            </>
+        )
     }
 }
